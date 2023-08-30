@@ -34,9 +34,7 @@ def clean_fantasy_pull(df_proj):
 
 
     # Columns to convert to float
-    float_columns = ['pass_att', 'pass_cmp', 'pass_yds', 'pass_td', 'pass_int',
-                     'rush_att', 'rush_yds', 'rush_td', 'fumble_lost', 'fpts', 
-                     'rec_att', 'rec_yds', 'rec_td']
+    float_columns = ['pass_yds',  'rush_yds', 'rec_yds']
 
     for col in float_columns:
         df_proj[col] = df_proj[col].str.replace(',', '').astype(float)
@@ -53,10 +51,6 @@ def clean_fantasy_pull(df_proj):
 
 
 
-#Set Up Tabs
-tab_league_settings, tab_rankings = st.tabs(["Settings", "Rankings"])
-
-
 #Read In Data
 df_proj = pd.read_csv('Data/fpros_projections.csv')
 df_proj_floor = pd.read_csv('Data/fpros_projections_floor.csv')
@@ -64,7 +58,6 @@ df_proj_ceil = pd.read_csv('Data/fpros_projections_ceil.csv')
 
 #Data Clean
 df_proj = clean_fantasy_pull(df_proj)
-df_proj = clean_fantasy_pull(dfs)
 
 df_proj_floor = clean_fantasy_pull(df_proj_floor)
 df_proj_floor['player'] = df_proj_floor['player'].str.replace('low', '')
@@ -77,6 +70,31 @@ df_proj_ceil = df_proj_ceil[['player', 'fpts']]
 df_proj_ceil.rename(columns={"fpts": "fpts_ceil"}, inplace=True)
 
 
+#Combine Data
+df_proj = pd.merge(df_proj, df_proj_ceil, how = 'left', on = 'player' )
+df_proj = pd.merge(df_proj, df_proj_floor, how = 'left', on = 'player' )
+
+
+df_proj = df_proj[['player', 'position', 'fpts', 'fpts_ceil', 'fpts_floor']]
+
+
+
+df_proj = df_proj.sort_values(by=['position', 'fpts'], ascending=[True, False])
+
+# Assign ranks within each position group & add fields
+
+df_proj['voltailty'] =  df_proj.fpts_ceil - df_proj.fpts_floor
+df_proj['fpts_upside'] =  df_proj.fpts_ceil - df_proj.fpts
+df_proj['fpts_downside'] =  df_proj.fpts_floor - df_proj.fpts
+
+df_proj['pos_rank'] = df_proj.groupby('position').cumcount() + 1
+
+
+
+
+
+#Set Up Tabs
+tab_league_settings, tab_rankings = st.tabs(["Settings", "Rankings"])
 
 
 
