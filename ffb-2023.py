@@ -1,5 +1,4 @@
 import streamlit as st
-
 import pandas as pd
 import matplotlib.pyplot as plt 
 import numpy as np
@@ -76,3 +75,11 @@ df_proj_ceil = clean_fantasy_pull(df_proj_ceil)
 df_proj_ceil['player'] = df_proj_ceil['player'].str.replace('high', '')
 df_proj_ceil = df_proj_ceil[['player', 'fpts']]
 df_proj_ceil.rename(columns={"fpts": "fpts_ceil"}, inplace=True)
+
+
+
+
+
+#Rankings
+
+tab_rankings.dataframe( df_proj , use_container_width = True)
