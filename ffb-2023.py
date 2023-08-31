@@ -310,13 +310,13 @@ with cutoff_desc_col3:
 
 
 with cutoff_col1: 
-    st.dataframe(df_bench_cutoff.style.hide_index())
+    st.dataframe(df_bench_cutoff)
 
 
 
 with cutoff_col2:
 
-    st.dataframe(df_fa_cutoff.style.hide_index())
+    st.dataframe(df_fa_cutoff)
 
 
 with cutoff_col3:
