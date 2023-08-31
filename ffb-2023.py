@@ -202,7 +202,7 @@ df_proj = df_proj.sort_values(by='fpts', ascending=False)
 
 df_rb_proj = df_proj[(df_proj.position == 'RB') & (df_proj['pos_rank'] <= teams*(rb+flex))]
 df_wr_proj = df_proj[(df_proj.position == 'WR') & (df_proj['pos_rank'] <= teams*(wr+flex))]
-df_flex = pd.concat([df_rb_proj, df_wr_proj],, ignore_index=True).sort_values(by=['fpts'], ascending=False)
+df_flex = pd.concat([df_rb_proj, df_wr_proj], ignore_index=True).sort_values(by=['fpts'], ascending=False)
 
 #Bench Cutoffs
 flex_cutoff = df_flex.iloc[teams*(wr + rb + flex) - 1].fpts
