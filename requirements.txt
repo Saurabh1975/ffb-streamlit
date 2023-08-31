@@ -2,4 +2,4 @@ pandas
 streamlit
 numpy
 matplotlib
-sklearn.linear_model
+sklearn
