@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
 import base64
-from sklearn.linear_model import LinearRegression
+from scikit_learn.linear_model import LinearRegression
 
 
 st.set_page_config(layout="wide")
@@ -370,6 +370,9 @@ flex_display = df_display[df_display["position"].isin(["WR", "RB"])].nlargest(ro
 # Combine the filtered DataFrames
 df_display = pd.concat([qb_display, te_display, flex_display])
 df_display = df_display.sort_values(by='fpts_vbd', ascending=False).reset_index()
+
+
+from sklearn.linear_model import LinearRegression
 
 
 # Create a linear regression model
