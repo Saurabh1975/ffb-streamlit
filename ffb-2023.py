@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import streamlit as st
 import base64
-from scikit_learn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression
 
 
 st.set_page_config(layout="wide")
