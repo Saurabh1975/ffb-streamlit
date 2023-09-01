@@ -22,7 +22,7 @@ section_title_style = 'font-size: 14; text-align: left; font-family: Roboto Blac
 section_body_style = 'font-size: 14; text-align: left; font-family: Roboto'
 title_style = 'font-size: 32px; font-weight: bold;font-family: Roboto Black'
 
-st.markdown(f'<p style="{title_style}">🏈 2023 Fantasy Footaball Charts & Cheatsheets</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="{title_style}">🏈 2023 Fantasy Football Charts & Cheatsheets</p>', unsafe_allow_html=True)
 
 subtitle_text = 'by <a href="https://twitter.com/SaurabhOnTap" target="_blank" rel="noopener noreferrer">Saurabh Rane</a> | Data via  <a href="https://fantasypros.com/" target="_blank" rel="noopener noreferrer">FantasyPros</a>, Last Updated ' +  df_proj['updated_date'].iloc[0]
 st.markdown(f'<p style="{section_body_style}">{subtitle_text}</p>', unsafe_allow_html=True)
