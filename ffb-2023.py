@@ -6,7 +6,7 @@ import base64
 from sklearn.linear_model import LinearRegression
 
 
-st.set_page_config(page_title="2024 Fantasy 🏈 Cheatsheet", layout="wide")
+st.set_page_config(page_title="2023 Fantasy 🏈 Cheatsheet", layout="wide")
 
 
 
