@@ -6,7 +6,7 @@ import base64
 from sklearn.linear_model import LinearRegression
 
 
-st.set_page_config(layout="wide")
+st.set_page_config(page_title="2024 Fantasy 🏈 Cheatsheet", layout="wide")
 
 
 
@@ -15,7 +15,7 @@ section_title_style = 'font-size: 14; text-align: left; font-family: Roboto Blac
 section_body_style = 'font-size: 14; text-align: left; font-family: Roboto'
 title_style = 'font-size: 32px; font-weight: bold;font-family: Roboto Black'
 
-st.markdown(f'<p style="{title_style}">🏈 2023 Fantasy Footabll Charts & Cheatsheets</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="{title_style}">🏈 2023 Fantasy Footaball Charts & Cheatsheets</p>', unsafe_allow_html=True)
 
 subtitle_text = 'by <a href="https://twitter.com/SaurabhOnTap" target="_blank" rel="noopener noreferrer">Saurabh Rane</a> | Data via  <a href="https://fantasypros.com/" target="_blank" rel="noopener noreferrer">FantasyPros</a>'
 st.markdown(f'<p style="{section_body_style}">{subtitle_text}</p>', unsafe_allow_html=True)
@@ -75,6 +75,9 @@ tab_league_settings.write(f'<p style="{section_title_style}">Overview</p>', unsa
 
 
 tab_league_settings.write(f'<p style="{section_body_style}">The goal of this app is to generate a custom cheatsheet based on FantasyPros projections for your league. Insert your league settings below and toggle over to the Rankings for an exportable cheatsheet. The Charts tab showcases positonal upside/downside within each player group</p>', unsafe_allow_html=True)
+
+
+tab_league_settings.write(f'<p style="{section_body_style}">If you have any feedback, questions, or feature requests please reach out via <a href="https://twitter.com/SaurabhOnTap" target="_blank" rel="noopener noreferrer">Twitter</a>. Features in the pipeline are: abiltiy to mark drafted players, custom baselines, & incorporating ECR as a way to asssess downside/upside.</p>', unsafe_allow_html=True)
 
 tab_league_settings.write(f'<p style="{section_title_style}">Scoring Settings</p>', unsafe_allow_html=True)
 tab_league_settings.write(f'<p style="{section_body_style}">Inesrt league scoring settings below</p>', unsafe_allow_html=True)
@@ -306,7 +309,7 @@ with cutoff_desc_col2:
 with cutoff_desc_col3:
     st.write(f'<p style="{section_title_style}">Other Key Terms</p>', unsafe_allow_html=True)
 
-    st.write(f'<p style="{section_body_style}"><b>Floor/Ceiling Above Expected:</b> Each player is expected to have a ceiling/floor based on their projected. For example, players proejcted to score 384 points, are expected to have a ceiling of 403 points. So Mahommes ceiling for 421 represents "+18" over expected</p>', unsafe_allow_html=True)
+    st.write(f'<p style="{section_body_style}"><b>Floor/Ceiling Above Expected:</b> Each player is expected to have a ceiling/floor based on their projected. For example, players proejcted to score 384 points, are expected to have a ceiling of 403 points. So Mahommes ceiling for 421 represents "+18" over expected. Floor/Ceiling values are calcualted using the low/high projections on FantasyPros.</p>', unsafe_allow_html=True)
 
 
 with cutoff_col1: 
