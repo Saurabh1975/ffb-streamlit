@@ -4,6 +4,13 @@ import numpy as np
 import streamlit as st
 import base64
 from sklearn.linear_model import LinearRegression
+from datetime import date
+
+
+#Read In Data
+df_proj = pd.read_csv('Data/fpros_projections.csv')
+df_proj_floor = pd.read_csv('Data/fpros_projections_floor.csv')
+df_proj_ceil = pd.read_csv('Data/fpros_projections_ceil.csv')
 
 
 st.set_page_config(page_title="2023 Fantasy 🏈 Cheatsheet", layout="wide")
@@ -17,8 +24,9 @@ title_style = 'font-size: 32px; font-weight: bold;font-family: Roboto Black'
 
 st.markdown(f'<p style="{title_style}">🏈 2023 Fantasy Footaball Charts & Cheatsheets</p>', unsafe_allow_html=True)
 
-subtitle_text = 'by <a href="https://twitter.com/SaurabhOnTap" target="_blank" rel="noopener noreferrer">Saurabh Rane</a> | Data via  <a href="https://fantasypros.com/" target="_blank" rel="noopener noreferrer">FantasyPros</a>'
+subtitle_text = 'by <a href="https://twitter.com/SaurabhOnTap" target="_blank" rel="noopener noreferrer">Saurabh Rane</a> | Data via  <a href="https://fantasypros.com/" target="_blank" rel="noopener noreferrer">FantasyPros</a>, Last Updated ' +  df_proj['updated_date'].iloc[0]
 st.markdown(f'<p style="{section_body_style}">{subtitle_text}</p>', unsafe_allow_html=True)
+
 
 
 def calc_fpts(df_proj):
@@ -139,10 +147,6 @@ available_dollars = teams*starter_budget
     
 
 
-#Read In Data
-df_proj = pd.read_csv('Data/fpros_projections.csv')
-df_proj_floor = pd.read_csv('Data/fpros_projections_floor.csv')
-df_proj_ceil = pd.read_csv('Data/fpros_projections_ceil.csv')
 
 #Data Clean
 df_proj = clean_fantasy_pull(df_proj)
