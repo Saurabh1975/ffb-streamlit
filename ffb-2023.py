@@ -540,7 +540,7 @@ def get_chart(viz_df, title_text):
     x_min =  viz_df['Fantasy Points'] + viz_df.fpts_downside
     x_max =  viz_df['Fantasy Points'] + viz_df.fpts_upside
     
-    baseline =  viz_df[viz_df['Value Over Bench'] == 0]['Fantasy Points'].iloc[0]
+    baseline =  viz_df[viz_df['Value Over Bench'] >= 0].sort_values(by='Fantasy Points')['Fantasy Points'].iloc[0]
 
     
     
@@ -692,6 +692,7 @@ with viz_col2:
     
     viz_df = df_chart[df_chart['Pos.'].str.contains('RB')].sort_values(by='Fantasy Points', ascending = False)
     viz_df = viz_df.iloc[:teams*(rb+flex+1)]
+    
     st.pyplot(get_chart(viz_df, title_text = "Top " + str(len(viz_df.index)) + " RBs, Floor/Ceiling"))
     
     
